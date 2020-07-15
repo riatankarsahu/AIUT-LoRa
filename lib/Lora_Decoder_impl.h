@@ -57,6 +57,11 @@ namespace gr
       Lora_Decoder_impl(int spreading_factor, int code_rate, bool low_data_rate, bool header);
       ~Lora_Decoder_impl();
 
+      void to_gray(vector<unsigned short> &symbols);
+      void from_gray(vector<unsigned short> &symbols);
+      void whiten(vector<unsigned short> &symbols);
+      
+
       // Where all the action really happens
       void forecast (int noutput_items, gr_vector_int &ninput_items_required);
 
