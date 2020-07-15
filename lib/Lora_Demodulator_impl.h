@@ -24,6 +24,18 @@
 #define INCLUDED_AIUT_LORA_DEMODULATOR_IMPL_H
 
 #include <AIUT/Lora_Demodulator.h>
+#include <cmath>
+#include <cstdlib>
+#include <vector>
+#include <queue>
+#include <complex>
+#include <fstream>
+#include <gnuradio/fft/fft.h>
+#include <gnuradio/fft/window.h>
+#include <volk/volk.h>
+
+using namespace std;
+using namespace pmt;
 
 namespace gr 
 {
@@ -32,7 +44,8 @@ namespace gr
     class Lora_Demodulator_impl : public Lora_Demodulator
     {
      private:
-      // Nothing to declare in this block.
+      pmt_t d_out_port;
+      demodulator_state_t d_state;
 
      public:
       Lora_Demodulator_impl(int spreading_factor, bool low_data_rate, float beta, int fft_factor);
