@@ -28,6 +28,7 @@
 #include <bitset>
 
 using namespace std;
+using namespace pmt;
 
 namespace gr 
 {
@@ -36,8 +37,8 @@ namespace gr
     class Lora_Decoder_impl : public Lora_Decoder
     {
      private:
-      pmt::pmt_t d_in_port;
-      pmt::pmt_t d_out_port;
+      pmt_t d_in_port;
+      pmt_t d_out_port;
 
       const unsigned short *d_whitening_sequence;
 
@@ -60,15 +61,15 @@ namespace gr
       void to_gray(vector<unsigned short> &symbols);
       void from_gray(vector<unsigned short> &symbols);
       void whiten(vector<unsigned short> &symbols);
-      
+      void deinterleave(vector<unsigned short> &symbols, vector<unsigned char> &codewords, unsigned char ppm, unsigned char rdd);
+      void hamming_decode(vector<unsigned char> &codewords, vector<unsigned char> &bytes, unsigned char rdd);
+      unsigned char parity(unsigned char c, unsigned char bitmask);
+      void print_payload(vector<unsigned char> &payload);
 
-      // Where all the action really happens
-      void forecast (int noutput_items, gr_vector_int &ninput_items_required);
+      void print_bitwise_u8(vector<unsigned char> &buffer);
+      void print_bitwise_u16(vector<unsigned char> &buffer);
 
-      int general_work(int noutput_items,
-           gr_vector_int &ninput_items,
-           gr_vector_const_void_star &input_items,
-           gr_vector_void_star &output_items);
+      void decode(pmt_t msg);     
     };
 
   } // namespace AIUT
