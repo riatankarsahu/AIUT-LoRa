@@ -73,9 +73,15 @@ namespace gr
       vector<gr_complex> d_upchirp;
       vector<gr_complex> d_downchirp;
 
+      vector<unsigned short> d_symbols;
+
+      ofstream f_raw, f_up_windowless, f_up, f_down;
+
      public:
       Lora_Demodulator_impl(int spreading_factor, bool low_data_rate, float beta, int fft_factor);
       ~Lora_Demodulator_impl();
+
+      unsigned short argmax(gr_complex *fft_result, bool update_squelch);
 
       // Where all the action really happens
       void forecast (int noutput_items, gr_vector_int &ninput_items_required);
