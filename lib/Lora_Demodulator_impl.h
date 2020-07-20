@@ -50,10 +50,10 @@ namespace gr
       bool d_ldr;
 
       unsigned short d_num_symbols;
-      unsigned short  d_fft_size_factor;
-      unsigned short  d_fft_size;
-      unsigned short  d_overlaps;
-      unsigned short  d_offset;
+      unsigned short d_fft_size_factor;
+      unsigned short d_fft_size;
+      unsigned short d_overlaps;
+      unsigned short d_offset;
 
       float d_power;
       float d_threshold;
