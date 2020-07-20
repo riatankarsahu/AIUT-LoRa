@@ -46,6 +46,32 @@ namespace gr
      private:
       pmt_t d_out_port;
       demodulator_state_t d_state;
+      unsigned short d_sf;
+      bool d_ldr;
+
+      unsigned short d_num_symbols;
+      unsigned short  d_fft_size_factor;
+      unsigned short  d_fft_size;
+      unsigned short  d_overlaps;
+      unsigned short  d_offset;
+
+      float d_power;
+      float d_threshold;
+      bool d_squelched;
+
+      unsigned short d_preamble_idx;
+      unsigned short d_sfd_idx;
+      
+      vector<unsigned short> d_argmax_history;
+      vector<unsigned short> d_sfd_history;
+      unsigned short d_sync_recovery_counter;
+
+      fft::fft_complex *d_fft;
+      vector<float> d_window;
+      float d_beta;
+
+      vector<gr_complex> d_upchirp;
+      vector<gr_complex> d_downchirp;
 
      public:
       Lora_Demodulator_impl(int spreading_factor, bool low_data_rate, float beta, int fft_factor);
