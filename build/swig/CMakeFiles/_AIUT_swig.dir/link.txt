@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -g -shared  -o _AIUT_swig.so CMakeFiles/_AIUT_swig.dir/AIUT_swigPYTHON_wrap.cxx.o  -Wl,-rpath,/home/ritankar/gr-AIUT/build/lib: //usr/lib/x86_64-linux-gnu/libpython2.7.so ../lib/libgnuradio-AIUT-1.0.0git.so.0.0.0 //usr/lib/x86_64-linux-gnu/libboost_filesystem.so //usr/lib/x86_64-linux-gnu/libboost_system.so -lgnuradio-runtime -lgnuradio-pmt 

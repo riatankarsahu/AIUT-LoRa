@@ -1,0 +1,42 @@
+[
+{
+  "directory": "/home/ritankar/gr-AIUT/build/lib",
+  "command": "/usr/bin/c++ -Dgnuradio_AIUT_EXPORTS -I/home/ritankar/gr-AIUT/lib -I/home/ritankar/gr-AIUT/include -I/home/ritankar/gr-AIUT/build/lib -I/home/ritankar/gr-AIUT/build/include -g -fPIC   -fvisibility=hidden -o CMakeFiles/gnuradio-AIUT.dir/Lora_Decoder_impl.cc.o -c /home/ritankar/gr-AIUT/lib/Lora_Decoder_impl.cc",
+  "file": "/home/ritankar/gr-AIUT/lib/Lora_Decoder_impl.cc"
+},
+{
+  "directory": "/home/ritankar/gr-AIUT/build/lib",
+  "command": "/usr/bin/c++ -Dgnuradio_AIUT_EXPORTS -I/home/ritankar/gr-AIUT/lib -I/home/ritankar/gr-AIUT/include -I/home/ritankar/gr-AIUT/build/lib -I/home/ritankar/gr-AIUT/build/include -g -fPIC   -fvisibility=hidden -o CMakeFiles/gnuradio-AIUT.dir/Lora_Demodulator_impl.cc.o -c /home/ritankar/gr-AIUT/lib/Lora_Demodulator_impl.cc",
+  "file": "/home/ritankar/gr-AIUT/lib/Lora_Demodulator_impl.cc"
+},
+{
+  "directory": "/home/ritankar/gr-AIUT/build/lib",
+  "command": "/usr/bin/c++  -I/home/ritankar/gr-AIUT/lib -I/home/ritankar/gr-AIUT/include -I/home/ritankar/gr-AIUT/build/lib -I/home/ritankar/gr-AIUT/build/include -g   -fvisibility=hidden -o CMakeFiles/test-AIUT.dir/test_AIUT.cc.o -c /home/ritankar/gr-AIUT/lib/test_AIUT.cc",
+  "file": "/home/ritankar/gr-AIUT/lib/test_AIUT.cc"
+},
+{
+  "directory": "/home/ritankar/gr-AIUT/build/lib",
+  "command": "/usr/bin/c++  -I/home/ritankar/gr-AIUT/lib -I/home/ritankar/gr-AIUT/include -I/home/ritankar/gr-AIUT/build/lib -I/home/ritankar/gr-AIUT/build/include -g   -fvisibility=hidden -o CMakeFiles/test-AIUT.dir/qa_AIUT.cc.o -c /home/ritankar/gr-AIUT/lib/qa_AIUT.cc",
+  "file": "/home/ritankar/gr-AIUT/lib/qa_AIUT.cc"
+},
+{
+  "directory": "/home/ritankar/gr-AIUT/build/swig",
+  "command": "/usr/bin/c++  -I/home/ritankar/gr-AIUT/lib -I/home/ritankar/gr-AIUT/include -I/home/ritankar/gr-AIUT/build/lib -I/home/ritankar/gr-AIUT/build/include -I/home/ritankar/gr-AIUT/build/swig -I/home/ritankar/gr-AIUT/swig -I/usr/include/gnuradio/swig -I//usr/include/python2.7 -g   -fvisibility=hidden -o CMakeFiles/AIUT_swig_swig_2d0df.dir/AIUT_swig_swig_2d0df.cpp.o -c /home/ritankar/gr-AIUT/build/swig/AIUT_swig_swig_2d0df.cpp",
+  "file": "/home/ritankar/gr-AIUT/build/swig/AIUT_swig_swig_2d0df.cpp"
+},
+{
+  "directory": "/home/ritankar/gr-AIUT/build/swig",
+  "command": "/usr/bin/c++  -I/home/ritankar/gr-AIUT/lib -I/home/ritankar/gr-AIUT/include -I/home/ritankar/gr-AIUT/build/lib -I/home/ritankar/gr-AIUT/build/include -I/home/ritankar/gr-AIUT/build/swig -I/home/ritankar/gr-AIUT/swig -I/usr/include/gnuradio/swig -I//usr/include/python2.7 -g   -fvisibility=hidden -o CMakeFiles/_AIUT_swig_swig_tag.dir/_AIUT_swig_swig_tag.cpp.o -c /home/ritankar/gr-AIUT/build/swig/_AIUT_swig_swig_tag.cpp",
+  "file": "/home/ritankar/gr-AIUT/build/swig/_AIUT_swig_swig_tag.cpp"
+},
+{
+  "directory": "/home/ritankar/gr-AIUT/build/swig",
+  "command": "/usr/bin/c++  -I/home/ritankar/gr-AIUT/lib -I/home/ritankar/gr-AIUT/include -I/home/ritankar/gr-AIUT/build/lib -I/home/ritankar/gr-AIUT/build/include -I/home/ritankar/gr-AIUT/build/swig -I/home/ritankar/gr-AIUT/swig -I/usr/include/gnuradio/swig -I//usr/include/python2.7 -g   -fvisibility=hidden -o CMakeFiles/_AIUT_swig_doc_tag.dir/_AIUT_swig_doc_tag.cpp.o -c /home/ritankar/gr-AIUT/build/swig/_AIUT_swig_doc_tag.cpp",
+  "file": "/home/ritankar/gr-AIUT/build/swig/_AIUT_swig_doc_tag.cpp"
+},
+{
+  "directory": "/home/ritankar/gr-AIUT/build/swig",
+  "command": "/usr/bin/c++ -D_AIUT_swig_EXPORTS -I/home/ritankar/gr-AIUT/lib -I/home/ritankar/gr-AIUT/include -I/home/ritankar/gr-AIUT/build/lib -I/home/ritankar/gr-AIUT/build/include -I/home/ritankar/gr-AIUT/build/swig -I/home/ritankar/gr-AIUT/swig -I/usr/include/gnuradio/swig -I//usr/include/python2.7 -g -fPIC   -fvisibility=hidden -Wno-unused-but-set-variable -o CMakeFiles/_AIUT_swig.dir/AIUT_swigPYTHON_wrap.cxx.o -c /home/ritankar/gr-AIUT/build/swig/AIUT_swigPYTHON_wrap.cxx",
+  "file": "/home/ritankar/gr-AIUT/build/swig/AIUT_swigPYTHON_wrap.cxx"
+}
+]
