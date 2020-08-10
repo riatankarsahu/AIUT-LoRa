@@ -96,7 +96,7 @@ namespace gr {
         d_upchirp.push_back(gr_complex(std::polar(1.0, accumulator)));
         phase += (2*M_PI)/d_num_symbols;
       }
-      set_history(DEMODULATOR_HISTORY_DEPTH *d_num_symbols);
+      set_history(DEMODULATOR_HISTORY_DEPTH*d_num_symbols);
     }  
 
     /*
@@ -113,7 +113,6 @@ namespace gr {
       float magsq   = pow(real(fft_result[0]), 2) + pow(imag(fft_result[0]), 2);
       float max_val = magsq;
       unsigned short   max_idx = 0;
-
 
       for (unsigned short i = 0; i < d_fft_size; i++)
       {
@@ -168,7 +167,7 @@ namespace gr {
       // Dechirp the incoming signal
       volk_32fc_x2_multiply_32fc(down_block, in, &d_upchirp[0], d_num_symbols);
 
-      if (d_state == S_READ_HEADER || d_state == S_READ_PAYLOAD)
+      if(d_state == S_READ_HEADER || d_state == S_READ_PAYLOAD)
       {
         volk_32fc_x2_multiply_32fc(up_block, in, &d_downchirp[d_offset], d_num_symbols);
       }
@@ -192,7 +191,7 @@ namespace gr {
 
       // Preamble and Data FFT
       // If d_fft_size_factor is greater than 1, the rest of the sample buffer will be zeroed out and blend into the window
-      memset(d_fft->get_inbuf(),            0, d_fft_size*sizeof(gr_complex));
+      memset(d_fft->get_inbuf(), 0, d_fft_size*sizeof(gr_complex));
       memcpy(d_fft->get_inbuf(), &up_block[0], d_num_symbols*sizeof(gr_complex));
       d_fft->execute();
 
@@ -205,7 +204,8 @@ namespace gr {
         d_argmax_history.pop_back();
       }
 
-      switch (d_state) {
+      switch (d_state) 
+      {
       case S_RESET:
         d_overlaps = OVERLAP_DEFAULT;
         d_offset = 0;
@@ -223,7 +223,6 @@ namespace gr {
         break;
 
 
-
       case S_PREFILL:
         if (d_argmax_history.size() >= REQUIRED_PREAMBLE_CHIRPS)
         {
@@ -234,8 +233,6 @@ namespace gr {
           #endif
         }
         break;
-
-
 
       // Looks for the same symbol appearing consecutively, signifying the LoRa preamble
       case S_DETECT_PREAMBLE:
@@ -266,8 +263,6 @@ namespace gr {
         }
         break;
 
-
-
       // Accurately synchronize to the SFD by computing overlapping FFTs of the downchirp/SFD IQ stream
       // Effectively increases FFT's time-based resolution, allowing for a better sync
       case S_SFD_SYNC:
@@ -288,7 +283,7 @@ namespace gr {
         // Iterate through sample buffer
         for (int ol = 0; ol < d_overlaps; ol++)
         {
-          d_offset = ((ol*d_num_symbols)/d_overlaps) % d_num_symbols;
+          d_offset = ((ol*d_num_symbols) / d_overlaps) % d_num_symbols;
 
           // Fill working buffer based on offset
           for (int j = 0; j < d_num_symbols; j++)
@@ -434,6 +429,5 @@ namespace gr {
 
       return noutput_items;
     }
-
   } /* namespace AIUT */
 } /* namespace gr */
