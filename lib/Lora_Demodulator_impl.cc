@@ -67,7 +67,7 @@ namespace gr {
         d_fft_size_factor(fft_factor)      
     {
       assert((d_sf > 5) && (d_sf < 13));
-      //if (d_sf == 6) assert(!header);   //Here I have got a problem!!!!!!!!!
+      if (d_sf == 6) assert(!d_state);   //Here I have got a problem!!!!!!!!!
       assert(d_fft_size_factor > 0);
 
       d_out_port = mp("out");

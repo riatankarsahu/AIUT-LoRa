@@ -1,19 +1,19 @@
-Start testing: Aug 17 17:41 CEST
+Start testing: Aug 17 17:48 CEST
 ----------------------------------------------------------
 1/3 Testing: test_AIUT
 1/3 Test: test_AIUT
 Command: "/bin/sh" "/home/ritankar/gr-AIUT/build/lib/test_AIUT_test.sh"
 Directory: /home/ritankar/gr-AIUT/build/lib
-"test_AIUT" start time: Aug 17 17:41 CEST
+"test_AIUT" start time: Aug 17 17:48 CEST
 Output:
 ----------------------------------------------------------
 
 
 <end of output>
-Test time =   0.01 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test_AIUT" end time: Aug 17 17:41 CEST
+"test_AIUT" end time: Aug 17 17:48 CEST
 "test_AIUT" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -21,7 +21,7 @@ Test Passed.
 2/3 Test: qa_Lora_Decoder
 Command: "/bin/sh" "/home/ritankar/gr-AIUT/build/python/qa_Lora_Decoder_test.sh"
 Directory: /home/ritankar/gr-AIUT/build/python
-"qa_Lora_Decoder" start time: Aug 17 17:41 CEST
+"qa_Lora_Decoder" start time: Aug 17 17:48 CEST
 Output:
 ----------------------------------------------------------
 WARNING: Config file '/home/ritankar/.gnuradio/config.conf' failed to parse:
@@ -39,10 +39,10 @@ Ran 1 test in 0.000s
 
 OK
 <end of output>
-Test time =   0.27 sec
+Test time =   0.47 sec
 ----------------------------------------------------------
 Test Passed.
-"qa_Lora_Decoder" end time: Aug 17 17:41 CEST
+"qa_Lora_Decoder" end time: Aug 17 17:48 CEST
 "qa_Lora_Decoder" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -50,7 +50,7 @@ Test Passed.
 3/3 Test: qa_Lora_Demodulator
 Command: "/bin/sh" "/home/ritankar/gr-AIUT/build/python/qa_Lora_Demodulator_test.sh"
 Directory: /home/ritankar/gr-AIUT/build/python
-"qa_Lora_Demodulator" start time: Aug 17 17:41 CEST
+"qa_Lora_Demodulator" start time: Aug 17 17:48 CEST
 Output:
 ----------------------------------------------------------
 WARNING: Config file '/home/ritankar/.gnuradio/config.conf' failed to parse:
@@ -64,15 +64,15 @@ std::exception
 Skipping it
 .
 ----------------------------------------------------------------------
-Ran 1 test in 0.001s
+Ran 1 test in 0.000s
 
 OK
 <end of output>
-Test time =   0.18 sec
+Test time =   0.19 sec
 ----------------------------------------------------------
 Test Passed.
-"qa_Lora_Demodulator" end time: Aug 17 17:41 CEST
+"qa_Lora_Demodulator" end time: Aug 17 17:48 CEST
 "qa_Lora_Demodulator" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Aug 17 17:41 CEST
+End testing: Aug 17 17:48 CEST
