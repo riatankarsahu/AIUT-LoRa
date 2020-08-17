@@ -11,9 +11,28 @@
        * key (makes the value accessible as $keyname, e.g. in the make node)
        * type -->
   <param>
-    <name>...</name>
-    <key>...</key>
-    <type>...</type>
+    <name>Spreading Factor</name>
+    <key>spreading_factor</key>
+    <value>12</value>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Code Rate / # Parity Bits</name>
+    <key>code_rate</key>
+    <value>4/5</value>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Low Data Rate</name>
+    <key>low_data_rate</key>
+    <value>False</value>
+    <type>bool</type>
+  </param>
+  <param>
+    <name>Explicit Header</name>
+    <key>header</key>
+    <value>False</value>
+    <type>bool</type>
   </param>
 
   <!-- Make one 'sink' node per input. Sub-nodes:
@@ -23,7 +42,7 @@
        * optional (set to 1 for optional inputs) -->
   <sink>
     <name>in</name>
-    <type><!-- e.g. int, float, complex, byte, short, xxx_vector, ...--></type>
+    <type>message</type>
   </sink>
 
   <!-- Make one 'source' node per output. Sub-nodes:
@@ -33,6 +52,6 @@
        * optional (set to 1 for optional inputs) -->
   <source>
     <name>out</name>
-    <type><!-- e.g. int, float, complex, byte, short, xxx_vector, ...--></type>
+    <type>message</type>
   </source>
 </block>
