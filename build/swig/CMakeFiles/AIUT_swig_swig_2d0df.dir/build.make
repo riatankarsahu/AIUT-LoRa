@@ -90,6 +90,7 @@ swig/AIUT_swig_swig_2d0df.cpp: /usr/include/gnuradio/swig/gnuradio.i
 swig/AIUT_swig_swig_2d0df.cpp: /usr/include/gnuradio/swig/buffer.i
 swig/AIUT_swig_swig_2d0df.cpp: /usr/include/gnuradio/swig/sync_decimator.i
 swig/AIUT_swig_swig_2d0df.cpp: /usr/include/gnuradio/swig/gr_types.i
+swig/AIUT_swig_swig_2d0df.cpp: swig/AIUT_swig_doc.i
 swig/AIUT_swig_swig_2d0df.cpp: /usr/include/gnuradio/swig/message.i
 swig/AIUT_swig_swig_2d0df.cpp: /usr/include/gnuradio/swig/hier_block2.i
 swig/AIUT_swig_swig_2d0df.cpp: /usr/include/gnuradio/swig/block.i
@@ -110,14 +111,23 @@ swig/AIUT_swig_swig_2d0df.cpp: /usr/include/gnuradio/swig/block_detail.i
 swig/AIUT_swig_swig_2d0df.cpp: swig/AIUT_swig.tag
 	cd /home/ritankar/gr-AIUT/build/swig && /usr/bin/cmake -E copy /home/ritankar/gr-AIUT/build/swig/AIUT_swig_swig_2d0df.cpp.in /home/ritankar/gr-AIUT/build/swig/AIUT_swig_swig_2d0df.cpp
 
+swig/AIUT_swig_doc.i: swig/AIUT_swig_doc_swig_docs/xml/index.xml
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ritankar/gr-AIUT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating python docstrings for AIUT_swig_doc"
+	cd /home/ritankar/gr-AIUT/docs/doxygen && /usr/bin/python2 -B /home/ritankar/gr-AIUT/docs/doxygen/swig_doc.py /home/ritankar/gr-AIUT/build/swig/AIUT_swig_doc_swig_docs/xml /home/ritankar/gr-AIUT/build/swig/AIUT_swig_doc.i
+
 swig/AIUT_swig.tag: swig/_AIUT_swig_swig_tag
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ritankar/gr-AIUT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating AIUT_swig.tag"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ritankar/gr-AIUT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating AIUT_swig.tag"
 	cd /home/ritankar/gr-AIUT/build/swig && ./_AIUT_swig_swig_tag
 	cd /home/ritankar/gr-AIUT/build/swig && /usr/bin/cmake -E touch /home/ritankar/gr-AIUT/build/swig/AIUT_swig.tag
 
+swig/AIUT_swig_doc_swig_docs/xml/index.xml: swig/_AIUT_swig_doc_tag
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ritankar/gr-AIUT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating doxygen xml for AIUT_swig_doc docs"
+	cd /home/ritankar/gr-AIUT/build/swig && ./_AIUT_swig_doc_tag
+	cd /home/ritankar/gr-AIUT/build/swig && /usr/bin/doxygen /home/ritankar/gr-AIUT/build/swig/AIUT_swig_doc_swig_docs/Doxyfile
+
 swig/CMakeFiles/AIUT_swig_swig_2d0df.dir/AIUT_swig_swig_2d0df.cpp.o: swig/CMakeFiles/AIUT_swig_swig_2d0df.dir/flags.make
 swig/CMakeFiles/AIUT_swig_swig_2d0df.dir/AIUT_swig_swig_2d0df.cpp.o: swig/AIUT_swig_swig_2d0df.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ritankar/gr-AIUT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object swig/CMakeFiles/AIUT_swig_swig_2d0df.dir/AIUT_swig_swig_2d0df.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ritankar/gr-AIUT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object swig/CMakeFiles/AIUT_swig_swig_2d0df.dir/AIUT_swig_swig_2d0df.cpp.o"
 	cd /home/ritankar/gr-AIUT/build/swig && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AIUT_swig_swig_2d0df.dir/AIUT_swig_swig_2d0df.cpp.o -c /home/ritankar/gr-AIUT/build/swig/AIUT_swig_swig_2d0df.cpp
 
 swig/CMakeFiles/AIUT_swig_swig_2d0df.dir/AIUT_swig_swig_2d0df.cpp.i: cmake_force
@@ -138,7 +148,7 @@ AIUT_swig_swig_2d0df_EXTERNAL_OBJECTS =
 swig/AIUT_swig_swig_2d0df: swig/CMakeFiles/AIUT_swig_swig_2d0df.dir/AIUT_swig_swig_2d0df.cpp.o
 swig/AIUT_swig_swig_2d0df: swig/CMakeFiles/AIUT_swig_swig_2d0df.dir/build.make
 swig/AIUT_swig_swig_2d0df: swig/CMakeFiles/AIUT_swig_swig_2d0df.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ritankar/gr-AIUT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable AIUT_swig_swig_2d0df"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ritankar/gr-AIUT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable AIUT_swig_swig_2d0df"
 	cd /home/ritankar/gr-AIUT/build/swig && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/AIUT_swig_swig_2d0df.dir/link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Swig source"
 	cd /home/ritankar/gr-AIUT/build/swig && /usr/bin/cmake -E make_directory /home/ritankar/gr-AIUT/build/swig
@@ -154,7 +164,9 @@ swig/CMakeFiles/AIUT_swig_swig_2d0df.dir/clean:
 .PHONY : swig/CMakeFiles/AIUT_swig_swig_2d0df.dir/clean
 
 swig/CMakeFiles/AIUT_swig_swig_2d0df.dir/depend: swig/AIUT_swig_swig_2d0df.cpp
+swig/CMakeFiles/AIUT_swig_swig_2d0df.dir/depend: swig/AIUT_swig_doc.i
 swig/CMakeFiles/AIUT_swig_swig_2d0df.dir/depend: swig/AIUT_swig.tag
+swig/CMakeFiles/AIUT_swig_swig_2d0df.dir/depend: swig/AIUT_swig_doc_swig_docs/xml/index.xml
 	cd /home/ritankar/gr-AIUT/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ritankar/gr-AIUT /home/ritankar/gr-AIUT/swig /home/ritankar/gr-AIUT/build /home/ritankar/gr-AIUT/build/swig /home/ritankar/gr-AIUT/build/swig/CMakeFiles/AIUT_swig_swig_2d0df.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : swig/CMakeFiles/AIUT_swig_swig_2d0df.dir/depend
 

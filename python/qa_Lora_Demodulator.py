@@ -21,7 +21,6 @@
 
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
-import AIUT_swig as AIUT
 
 class qa_Lora_Demodulator (gr_unittest.TestCase):
 
