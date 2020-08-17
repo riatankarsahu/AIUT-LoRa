@@ -1,6 +1,8 @@
 /* -*- c++ -*- */
 /* 
- * Copyright 2020 <+YOU OR YOUR COMPANY+>.
+ * Copyright 2020 AIUT sp. z o. o
+ * Author - Ritankar Sahu
+ * Inspiration - Matt Knight (Bastille Threat Research Team)
  * 
  * This is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,6 +27,17 @@
 #include <gnuradio/io_signature.h>
 #include "Lora_Decoder_impl.h"
 
+#define MAXIMUM_RDD 4
+
+#define HAMMING_P1_BITMASK 0xAA  // 0b10101010
+#define HAMMING_P2_BITMASK 0x66  // 0b01100110
+#define HAMMING_P4_BITMASK 0x1E  // 0b00011110
+#define HAMMING_P8_BITMASK 0xFE  // 0b11111110
+
+#define INTERLEAVER_BLOCK_SIZE 12
+
+#define DEBUG_OUTPUT 0
+
 namespace gr {
   namespace AIUT {
 
@@ -40,9 +53,69 @@ namespace gr {
      */
     Lora_Decoder_impl::Lora_Decoder_impl(int spreading_factor, int code_rate, bool low_data_rate, bool header)
       : gr::block("Lora_Decoder",
-              gr::io_signature::make(<+MIN_IN+>, <+MAX_IN+>, sizeof(<+ITYPE+>)),
-              gr::io_signature::make(<+MIN_OUT+>, <+MAX_OUT+>, sizeof(<+OTYPE+>)))
-    {}
+              gr::io_signature::make(0, 0, 0),
+              gr::io_signature::make(0, 0, 0)),
+        d_sf(spreading_factor), d_cr(code_rate),
+        d_ldr(low_data_rate), d_header(header)
+    {
+      assert((d_sf > 5) && (d_sf < 13));
+      assert((d_cr > 0) && (d_cr < 5));
+      if (d_sf == 6) assert(!header);
+
+      d_in_port = pmt::mp("in");
+      d_out_port = pmt::mp("out");
+
+      message_port_register_in(d_in_port);
+      message_port_register_out(d_out_port);
+
+      set_msg_handler(d_in_port, boost::bind(&Lora_Decoder_impl::decode, this, _1));
+
+      switch(d_sf)
+      {
+        case 6:
+          if (d_ldr) d_whitening_sequence = whitening_sequence_sf6_ldr_implicit;    // implicit header, LDR on
+          else       d_whitening_sequence = whitening_sequence_sf6_implicit;        // implicit header, LDR on
+          break;
+        case 7:
+          if (d_ldr) d_whitening_sequence = whitening_sequence_sf7_ldr_implicit;    // implicit header, LDR on
+          else       d_whitening_sequence = whitening_sequence_sf7_implicit;        // implicit header, LDR on
+          break;
+        case 8:
+          if (d_ldr) d_whitening_sequence = whitening_sequence_sf8_ldr_implicit;    // implicit header, LDR on
+          else       d_whitening_sequence = whitening_sequence_sf8_implicit;        // implicit header, LDR on
+          break;
+        case 9:
+          if (d_ldr) d_whitening_sequence = whitening_sequence_sf9_ldr_implicit;    // implicit header, LDR on
+          else       d_whitening_sequence = whitening_sequence_sf9_implicit;        // implicit header, LDR on
+          break;
+        case 10:
+          if (d_ldr) d_whitening_sequence = whitening_sequence_sf10_ldr_implicit;    // implicit header, LDR on
+          else       d_whitening_sequence = whitening_sequence_sf10_implicit;        // implicit header, LDR on
+          break;
+        case 11:
+          if (d_ldr) d_whitening_sequence = whitening_sequence_sf11_ldr_implicit;    // implicit header, LDR on
+          else       d_whitening_sequence = whitening_sequence_sf11_implicit;        // implicit header, LDR on
+          break;
+        case 12:
+          if (d_ldr) d_whitening_sequence = whitening_sequence_sf12_ldr_implicit;    // implicit header, LDR on
+          else       d_whitening_sequence = whitening_sequence_sf12_implicit;        // implicit header, LDR on
+          break;
+        default:
+          std::cerr << "Invalid spreading factor -- this state should never occur." << std::endl;
+          d_whitening_sequence = whitening_sequence_sf8_implicit;   // TODO actually handle this
+          break;
+      }
+
+      if (d_header)
+      {
+        std::cout << "Warning: Explicit header mode is not yet supported." << std::endl;
+        std::cout << "         Using an implicit whitening sequence: demodulation will work correctly; decoding will not." << std::endl;
+      }
+
+      d_interleaver_size = d_sf;
+
+      d_fft_size = (1 << spreading_factor);
+    }
 
     /*
      * Our virtual destructor.
@@ -50,11 +123,26 @@ namespace gr {
     Lora_Decoder_impl::~Lora_Decoder_impl()
     {
     }
+    void
+    Lora_Decoder_impl::to_gray(std::vector<unsigned short> &symbols)
+    {
+      for (int i = 0; i < symbols.size(); i++)
+      {
+        symbols[i] = (symbols[i] >> 1) ^ symbols[i];
+      }
+    }
 
     void
-    Lora_Decoder_impl::forecast (int noutput_items, gr_vector_int &ninput_items_required)
+    Lora_Decoder_impl::from_gray(std::vector<unsigned short> &symbols)
     {
-      /* <+forecast+> e.g. ninput_items_required[0] = noutput_items */
+      for (int i = 0; i < symbols.size(); i++)
+      {
+        symbols[i] = symbols[i] ^ (symbols[i] >> 16);
+        symbols[i] = symbols[i] ^ (symbols[i] >>  8);
+        symbols[i] = symbols[i] ^ (symbols[i] >>  4);
+        symbols[i] = symbols[i] ^ (symbols[i] >>  2);
+        symbols[i] = symbols[i] ^ (symbols[i] >>  1);
+      }
     }
 
     int

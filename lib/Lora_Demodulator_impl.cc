@@ -108,7 +108,7 @@ namespace gr {
     }
 
     unsigned short
-    demod_impl::argmax(gr_complex *fft_result, bool update_squelch)
+    Lora_Demodulator_impl::argmax(gr_complex *fft_result, bool update_squelch)
     {
       float magsq   = pow(real(fft_result[0]), 2) + pow(imag(fft_result[0]), 2);
       float max_val = magsq;
