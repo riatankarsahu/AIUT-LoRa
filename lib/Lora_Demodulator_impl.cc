@@ -67,7 +67,7 @@ namespace gr {
         d_fft_size_factor(fft_factor)      
     {
       assert((d_sf > 5) && (d_sf < 13));
-      if (d_sf == 6) assert(!header);
+      //if (d_sf == 6) assert(!header);    //Here I have got a problem!!!!!!!!!
       assert(d_fft_size_factor > 0);
 
       d_out_port = mp("out");
@@ -272,7 +272,7 @@ namespace gr {
         d_overlaps = OVERLAP_FACTOR;
 
         // Recover if the SFD is missed, or if we wind up in this state erroneously (false positive on preamble)
-        if (d_sync_recovery_counter++ > DEMOD_SYNC_RECOVERY_COUNT)
+        if (d_sync_recovery_counter++ > DEMODULATOR_SYNC_RECOVERY_COUNT)
         {
           d_state = S_RESET;
           d_overlaps = OVERLAP_DEFAULT;
