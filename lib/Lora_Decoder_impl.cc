@@ -27,6 +27,9 @@
 #include <gnuradio/io_signature.h>
 #include "Lora_Decoder_impl.h"
 
+using namespace std;
+using namespace pmt;
+
 #define MAXIMUM_RDD 4
 
 #define HAMMING_P1_BITMASK 0xAA  // 0b10101010
@@ -101,15 +104,15 @@ namespace gr {
           else       d_whitening_sequence = whitening_sequence_sf12_implicit;        // implicit header, LDR on
           break;
         default:
-          std::cerr << "Invalid spreading factor -- this state should never occur." << std::endl;
+          cerr << "Invalid spreading factor -- this state should never occur." << endl;
           d_whitening_sequence = whitening_sequence_sf8_implicit;   // TODO actually handle this
           break;
       }
 
       if (d_header)
       {
-        std::cout << "Warning: Explicit header mode is not yet supported." << std::endl;
-        std::cout << "         Using an implicit whitening sequence: demodulation will work correctly; decoding will not." << std::endl;
+        cout << "Warning: Explicit header mode is not yet supported." << endl;
+        cout << "         Using an implicit whitening sequence: demodulation will work correctly; decoding will not." << endl;
       }
 
       d_interleaver_size = d_sf;
@@ -124,7 +127,7 @@ namespace gr {
     {
     }
     void
-    Lora_Decoder_impl::to_gray(std::vector<unsigned short> &symbols)
+    Lora_Decoder_impl::to_gray(vector<unsigned short> &symbols)
     {
       for (int i = 0; i < symbols.size(); i++)
       {
@@ -133,7 +136,7 @@ namespace gr {
     }
 
     void
-    Lora_Decoder_impl::from_gray(std::vector<unsigned short> &symbols)
+    Lora_Decoder_impl::from_gray(vector<unsigned short> &symbols)
     {
       for (int i = 0; i < symbols.size(); i++)
       {
@@ -142,6 +145,265 @@ namespace gr {
         symbols[i] = symbols[i] ^ (symbols[i] >>  4);
         symbols[i] = symbols[i] ^ (symbols[i] >>  2);
         symbols[i] = symbols[i] ^ (symbols[i] >>  1);
+      }
+    }
+
+    void
+    Lora_Decoder_impl::whiten(vector<unsigned short> &symbols)
+    {
+      for (int i = 0; (i < symbols.size()) && (i < whitening_sequence_length); i++)
+      {
+        symbols[i] = (symbols[i] ^ d_whitening_sequence[i]);
+      }
+    }
+
+     // Forward interleaver dimensions:
+    //  PPM   == number of bits per symbol OUT of interleaver        AND number of codewords IN to interleaver
+    //  RDD+4 == number of bits per codeword IN to interleaver       AND number of interleaved codewords OUT of interleaver
+    //
+    // bit width in:  (4+rdd)   block length: ppm
+    // bit width out: ppm       block length: (4+rdd)
+
+    // Reverse interleaver (de-interleaver) dimensions:
+    //  PPM   == number of bits per symbol IN to deinterleaver       AND number of codewords OUT of deinterleaver
+    //  RDD+4 == number of bits per codeword OUT of deinterleaver    AND number of interleaved codewords IN to deinterleaver
+    //
+    // bit width in:  ppm       block length: (4+rdd)
+    // bit width out: (4+rdd)   block length: ppm
+
+    void
+    Lora_Decoder_impl::deinterleave(vector <unsigned short> &symbols, vector <unsigned char> &codewords, unsigned char ppm, unsigned char rdd)
+    {
+      int symbol_offset = 0;
+      int bit_offset    = 0;
+      int bit_idx       = 0;
+      unsigned char block[INTERLEAVER_BLOCK_SIZE];    // maximum bit-width is 8, should RDD==4
+
+      // Swap MSBs of each symbol within buffer (one of LoRa's quirks)
+      for (int symbol_idx = 0; symbol_idx < symbols.size(); symbol_idx++)
+      {
+        symbols[symbol_idx] = ( (symbols[symbol_idx] &  (0x1 << (ppm-1))) >> 1 |
+                                (symbols[symbol_idx] &  (0x1 << (ppm-2))) << 1 |
+                                (symbols[symbol_idx] & ((0x1 << (ppm-2)) - 1))
+                              );
+      }
+
+      // Block interleaver: de-interleave RDD+4 symbols at a time into PPM codewords
+      for (int block_count = 0; block_count < symbols.size()/(4+rdd); block_count++)
+      {
+        memset(block, 0, INTERLEAVER_BLOCK_SIZE*sizeof(unsigned char));
+        bit_idx = 0;
+        bit_offset = 0;
+
+        // Iterate through each bit in the interleaver block
+        for (int bitcount = 0; bitcount < ppm*(4+rdd); bitcount++)
+        {
+              // Symbol indexing                                     // Diagonal pattern mask
+          if (symbols[(bitcount % (4+rdd)) + (4+rdd)*block_count] & ((0x1 << (ppm-1)) >> ((bit_idx + bit_offset) % ppm)))
+          {
+            block[bitcount / (4+rdd)] |= 0x1 << (bitcount % (4+rdd));   // integer divison in C++ is defined to floor
+          }
+
+          // bit_idx walks through diagonal interleaving pattern, bit_offset adjusts offset starting point for each codeword
+          if (bitcount % (4+rdd) == (4+rdd-1))
+          {
+            bit_idx = 0;
+            bit_offset++;
+          }
+          else
+          {
+            bit_idx++;
+          }
+        }
+
+        // Post-process de-interleaved codewords
+        for (int cw_idx = 0; cw_idx < ppm; cw_idx++)
+        {
+          // Put bits into traditional Hamming order
+          switch (rdd)
+          {
+            case 4:
+              block[cw_idx] = (block[cw_idx] & 128) | (block[cw_idx] & 64) | (block[cw_idx] & 32) >> 5 | (block[cw_idx] & 16) | (block[cw_idx] & 8) << 2 | (block[cw_idx] & 4) << 1 | (block[cw_idx] & 2) << 1 | (block[cw_idx] & 1) << 1;
+              break;
+
+            case 3:
+              block[cw_idx] = (block[cw_idx] & 64) | (block[cw_idx] & 32) | (block[cw_idx] & 16) >> 1 | (block[cw_idx] & 8) << 1 | (block[cw_idx] & 4) | (block[cw_idx] & 2) | (block[cw_idx] & 1);
+              break;
+
+            default:
+              break;
+          }
+
+          // Mask
+          block[cw_idx] = block[cw_idx] & ((1 << (4+rdd)) - 1);
+        }
+        
+        // Append deinterleaved codewords to codeword buffer, rearranging into proper order
+        if (ppm == 8)
+        {
+          codewords.push_back(block[6]);
+          codewords.push_back(block[7]);
+          codewords.push_back(block[4]);
+          codewords.push_back(block[5]);
+        }
+        else if (ppm == 7)
+        {
+          codewords.push_back(block[6]);
+          codewords.push_back(block[4]);
+          codewords.push_back(block[5]);
+        }
+        else if (ppm == 6)
+        {
+          codewords.push_back(block[4]);
+          codewords.push_back(block[5]);
+        }
+        else if (ppm == 5)
+        {
+          codewords.push_back(block[4]);
+        }
+        codewords.push_back(block[2]);
+        codewords.push_back(block[3]);
+        codewords.push_back(block[0]);
+        codewords.push_back(block[1]);
+      }
+    }
+
+    void
+    Lora_Decoder_impl::hamming_decode(vector<unsigned char> &codewords, vector<unsigned char> &bytes, unsigned char rdd)
+    {
+      unsigned char p1, p2, p4, p8;
+      unsigned char mask;
+      unsigned int num_set_bits;
+      unsigned int num_set_flags;
+      int error_pos = 0;
+
+      for (int i = 0; i < codewords.size(); i++)
+      {
+        switch (rdd) {
+          case 4:
+            p8 = parity(codewords[i], mask = (unsigned char)HAMMING_P8_BITMASK);
+          case 3:
+            p4 = parity(codewords[i], mask = (unsigned char)HAMMING_P4_BITMASK >> (4 - rdd));
+          case 2:
+            p2 = parity(codewords[i], mask = (unsigned char)HAMMING_P2_BITMASK >> (4 - rdd));
+          case 1:
+            p1 = parity(codewords[i], mask = (unsigned char)HAMMING_P1_BITMASK >> (4 - rdd));
+            break;
+        }
+
+        error_pos = -1;
+        if (p1 != 0) error_pos += 1;
+        if (p2 != 0) error_pos += 2;
+        if (p4 != 0) error_pos += 4;
+
+        num_set_flags = p1 + p2 + p4;
+
+        // Hamming(4+rdd,4) is only corrective if rdd >= 3
+        if (rdd > 2)
+        {
+          num_set_bits = 0;
+          for (int bit_idx = 0; bit_idx < 8; bit_idx++)
+          {
+            if (codewords[i] & (0x01 << bit_idx))
+            {
+              num_set_bits++;
+            }
+          }
+
+          if (error_pos >= 0 && num_set_bits < 6 && num_set_bits > 2)
+          {
+            codewords[i] ^= (0x80 >> (4-rdd)) >> error_pos;
+          } 
+
+          num_set_bits = 0;
+          for (int bit_idx = 0; bit_idx < 8; bit_idx++)
+          {
+            if (codewords[i] & (0x01 << bit_idx))
+            {
+              num_set_bits++;
+            }
+          }
+
+          // if (rdd == 4)
+          // {
+          //   if (num_set_bits < 3)
+          //   {
+          //     codewords[i] = 0;
+          //   }
+          //   else if (num_set_bits > 5)
+          //   {
+          //     codewords[i] = 0xFF;
+          //   }
+          // }
+        }
+
+        switch (rdd)
+        {
+          case 1:
+          case 2:
+            codewords[i] = codewords[i] & 0x0F;
+            break;
+          case 3:
+            codewords[i] = (((codewords[i] & 0x10) >> 1) | \
+                            ((codewords[i] & 0x04))      | \
+                            ((codewords[i] & 0x02))      | \
+                            ((codewords[i] & 0x01))) & 0x0F;
+            break;
+          case 4:
+            codewords[i] = (((codewords[i] & 0x20) >> 2) | \
+                            ((codewords[i] & 0x08) >> 1) | \
+                            ((codewords[i] & 0x04) >> 1) | \
+                            ((codewords[i] & 0x02) >> 1)) & 0x0F;
+            break;
+        }
+
+        bytes.push_back(codewords[i] & 0x0F);
+      }
+    }
+
+    unsigned char
+    Lora_Decoder_impl::parity(unsigned char c, unsigned char bitmask)
+    {
+      unsigned char parity = 0;
+      unsigned char shiftme = c & bitmask;
+
+      for (int i = 0; i < 8; i++)
+      {
+        if (shiftme & 0x1) parity++;
+        shiftme = shiftme >> 1;
+      }
+
+      return parity % 2;
+    }
+
+    void
+    Lora_Decoder_impl::print_payload(vector<unsigned char> &payload)
+    {
+      cout << "Received LoRa packet (hex): ";
+        for (int i = 0; i < payload.size(); i++)
+        {
+          cout << hex << (unsigned int)payload[i] << " ";
+        }
+        cout << endl;
+    }
+
+    void
+    Lora_Decoder_impl::print_bitwise_u8(vector<unsigned char> &buffer)
+    {
+      for (int i = 0; i < buffer.size(); i++)
+      {
+        cout << i << "\t" << bitset<8>(buffer[i] & 0xFF) << "\t";
+        cout << hex << (buffer[i] & 0xFF) << endl;
+      }
+    }
+
+    void
+    Lora_Decoder_impl::print_bitwise_u16(vector<unsigned char> &buffer)
+    {
+      for (int i = 0; i < buffer.size(); i++)
+      {
+        cout << i << "\t" << bitset<16>(buffer[i] & 0xFFFF) << "\t";
+        cout << hex << (buffer[i] & 0xFFFF) << endl;
       }
     }
 
