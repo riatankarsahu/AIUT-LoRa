@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="Lora__Demodulator_8h" kind="file" language="C++">
+    <compoundname>Lora_Demodulator.h</compoundname>
+    <includes refid="api_8h" local="no">AIUT/api.h</includes>
+    <includes local="no">gnuradio/block.h</includes>
+    <incdepgraph>
+      <node id="19">
+        <label>AIUT/api.h</label>
+        <link refid="api_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>gnuradio/attributes.h</label>
+      </node>
+      <node id="21">
+        <label>gnuradio/block.h</label>
+      </node>
+      <node id="18">
+        <label>/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h</label>
+        <link refid="Lora_Demodulator.h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classgr_1_1AIUT_1_1Lora__Demodulator" prot="public">gr::AIUT::Lora_Demodulator</innerclass>
+    <innernamespace refid="namespacegr">gr</innernamespace>
+    <innernamespace refid="namespacegr_1_1AIUT">gr::AIUT</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="Lora__Demodulator_8h_1a335ad09db4e5de6a6a839127964ae49e" prot="public" static="no">
+        <name>DEMODULATOR_HISTORY_DEPTH</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h" line="30" column="9" bodyfile="/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Lora__Demodulator_8h_1aec63cfd1559e0075e35fae2f1a81b1fc" prot="public" static="no">
+        <name>REQUIRED_PREAMBLE_CHIRPS</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h" line="31" column="9" bodyfile="/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Lora__Demodulator_8h_1af4808b2f42dd1e6656798151f4f9a4c7" prot="public" static="no">
+        <name>REQUIRED_SFD_CHIRPS</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h" line="32" column="9" bodyfile="/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Lora__Demodulator_8h_1a2f0f156e1cba585db801dc65f46fa8d1" prot="public" static="no">
+        <name>LORA_SFD_TOLERANCE</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h" line="33" column="9" bodyfile="/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Lora__Demodulator_8h_1a1fd26d306ddc14fd13364a5122543ce0" prot="public" static="no">
+        <name>LORA_PREAMBLE_TOLERANCE</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h" line="34" column="9" bodyfile="/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Lora__Demodulator_8h_1a01b27f7394993d19939d2bae314124b9" prot="public" static="no">
+        <name>DEMODULATOR_SYNC_RECOVERY_COUNT</name>
+        <initializer>(8 - <ref refid="Lora__Demodulator_8h_1aec63cfd1559e0075e35fae2f1a81b1fc" kindref="member">REQUIRED_PREAMBLE_CHIRPS</ref>) + (2 - <ref refid="Lora__Demodulator_8h_1af4808b2f42dd1e6656798151f4f9a4c7" kindref="member">REQUIRED_SFD_CHIRPS</ref>) + 4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h" line="35" column="9" bodyfile="/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/>-*-<sp/>c++<sp/>-*-<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>2020<sp/>AIUT<sp/>sp.<sp/>z<sp/>o.<sp/>o</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Author<sp/>-<sp/>Ritankar<sp/>Sahu</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Inspiration<sp/>-<sp/>Matt<sp/>Knight<sp/>(Bastille<sp/>Threat<sp/>Research<sp/>Team)</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>3,<sp/>or<sp/>(at<sp/>your<sp/>option)</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>This<sp/>software<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>but<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>along<sp/>with<sp/>this<sp/>software;<sp/>see<sp/>the<sp/>file<sp/>COPYING.<sp/><sp/>If<sp/>not,<sp/>write<sp/>to</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,<sp/>Inc.,<sp/>51<sp/>Franklin<sp/>Street,</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>Boston,<sp/>MA<sp/>02110-1301,<sp/>USA.</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>INCLUDED_AIUT_LORA_DEMODULATOR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INCLUDED_AIUT_LORA_DEMODULATOR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="api_8h" kindref="compound">AIUT/api.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;gnuradio/block.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="Lora__Demodulator_8h_1a335ad09db4e5de6a6a839127964ae49e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEMODULATOR_HISTORY_DEPTH<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="Lora__Demodulator_8h_1aec63cfd1559e0075e35fae2f1a81b1fc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REQUIRED_PREAMBLE_CHIRPS<sp/>4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="Lora__Demodulator_8h_1af4808b2f42dd1e6656798151f4f9a4c7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REQUIRED_SFD_CHIRPS<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="Lora__Demodulator_8h_1a2f0f156e1cba585db801dc65f46fa8d1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LORA_SFD_TOLERANCE<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="Lora__Demodulator_8h_1a1fd26d306ddc14fd13364a5122543ce0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LORA_PREAMBLE_TOLERANCE<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="Lora__Demodulator_8h_1a01b27f7394993d19939d2bae314124b9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEMODULATOR_SYNC_RECOVERY_COUNT<sp/>(8<sp/>-<sp/>REQUIRED_PREAMBLE_CHIRPS)<sp/>+<sp/>(2<sp/>-<sp/>REQUIRED_SFD_CHIRPS)<sp/>+<sp/>4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacegr" kindref="compound">gr</ref><sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">AIUT<sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="41" refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497" kindref="member">demodulator_state_t</ref></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="43" refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497af51a11d6ec5e13afd175d35e762969ee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497af51a11d6ec5e13afd175d35e762969ee" kindref="member">S_RESET</ref>,</highlight></codeline>
+<codeline lineno="44" refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497a2422414bceaea7eeab456dad4d9653da" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497a2422414bceaea7eeab456dad4d9653da" kindref="member">S_PREFILL</ref>,</highlight></codeline>
+<codeline lineno="45" refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497aae1cb05000f9840fa472d75a7dae90c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497aae1cb05000f9840fa472d75a7dae90c2" kindref="member">S_DETECT_PREAMBLE</ref>,</highlight></codeline>
+<codeline lineno="46" refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497ae062b617fc21afc38905319107d24b8c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497ae062b617fc21afc38905319107d24b8c" kindref="member">S_SFD_SYNC</ref>,</highlight></codeline>
+<codeline lineno="47" refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497a09e387661ec114bfbee52775f75cb417" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497a09e387661ec114bfbee52775f75cb417" kindref="member">S_READ_HEADER</ref>,</highlight></codeline>
+<codeline lineno="48" refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497ad18b138e6c14d791d54876e0babb5748" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497ad18b138e6c14d791d54876e0babb5748" kindref="member">S_READ_PAYLOAD</ref>,</highlight></codeline>
+<codeline lineno="49" refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497ab5a67dcd1f36e78ae6362366f80e3859" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497ab5a67dcd1f36e78ae6362366f80e3859" kindref="member">S_OUT</ref></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classgr_1_1AIUT_1_1Lora__Demodulator" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="api_8h_1a3fb5ea3a9adfe6a8e4edd9834259c70e" kindref="member">AIUT_API</ref><sp/><ref refid="classgr_1_1AIUT_1_1Lora__Demodulator" kindref="compound">Lora_Demodulator</ref><sp/>:<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>gr::block</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="60" refid="classgr_1_1AIUT_1_1Lora__Demodulator_1a82271de3b1e51b4f981041178325645f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>boost::shared_ptr&lt;Lora_Demodulator&gt;<sp/><ref refid="classgr_1_1AIUT_1_1Lora__Demodulator_1a82271de3b1e51b4f981041178325645f" kindref="member">sptr</ref>;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>sptr<sp/>make(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>spreading_factor,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>low_data_rate,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>beta,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>fft_factor);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>AIUT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>gr</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>INCLUDED_AIUT_LORA_DEMODULATOR_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h"/>
+  </compounddef>
+</doxygen>

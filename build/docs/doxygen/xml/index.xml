@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.11">
+  <compound refid="classgr_1_1AIUT_1_1Lora__Decoder" kind="class"><name>gr::AIUT::Lora_Decoder</name>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder_1a2ebcb0b75f38029e861052233d16fe4d" kind="typedef"><name>sptr</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder_1a03823716d2a093bd26db737ca4a7171f" kind="function"><name>make</name></member>
+  </compound>
+  <compound refid="classgr_1_1AIUT_1_1Lora__Decoder__impl" kind="class"><name>gr::AIUT::Lora_Decoder_impl</name>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1a553dbae5adfa4d10289ad9de7cbeee11" kind="variable"><name>d_in_port</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1a010040e9169ac4e29d9c9635b9e900f5" kind="variable"><name>d_out_port</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1a9fd3c5bb1ae5bcbd8c7951fa7759f274" kind="variable"><name>d_whitening_sequence</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1a24be3b78fb9a925ae9c9965d6089e493" kind="variable"><name>d_sf</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1a239df91766a2d3ae22151ecbe495c36b" kind="variable"><name>d_cr</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1ad570fd54c1a512326082ce697acddaa5" kind="variable"><name>d_ldr</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1ada52e80cf6f86003a69d018dd0ea498b" kind="variable"><name>d_header</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1a30a196a5c6ff172d4fb84190b397aa2a" kind="variable"><name>d_fft_size</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1a91c7200889b76aeb41b316f124445845" kind="variable"><name>d_interleaver_size</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1a7c11c3f3f7db709ce1bb1e2ac18e2cd8" kind="variable"><name>d_symbols</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1aa81bbd27d22b936c691e1d08f495a84e" kind="variable"><name>d_codewards</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1a3961fe21894073ade6b62205fb23de8f" kind="variable"><name>d_bytes</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1a85b31349706cb1e1a81f2b1f88c7a5a1" kind="function"><name>Lora_Decoder_impl</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1afed0364545139fedf29334413b1b68ab" kind="function"><name>~Lora_Decoder_impl</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1af16f257a8938aa0d590bd3fd14d470fd" kind="function"><name>to_gray</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1a50258f30eafbb7d5d15310ff3ad8cd0a" kind="function"><name>from_gray</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1aea745e8558b772501ece2a010612b7a7" kind="function"><name>whiten</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1ad53fb98db45cc23a1cdb754a8e80d0bc" kind="function"><name>deinterleave</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1a560a86a91b1101f30d1c310cd309b08b" kind="function"><name>hamming_decode</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1a53fb01aa21ab01a0be09b3b8a99a05e4" kind="function"><name>parity</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1a97b6e85d49fe8422f801e80f6b689690" kind="function"><name>print_payload</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1ab80fdbcc5754016b7fa02ab0ab821bec" kind="function"><name>print_bitwise_u8</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1a872e3a4b404f336cbd0dea080a08436e" kind="function"><name>print_bitwise_u16</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder__impl_1a9754e5daa75657a80f89832da1b89579" kind="function"><name>decode</name></member>
+  </compound>
+  <compound refid="classgr_1_1AIUT_1_1Lora__Demodulator" kind="class"><name>gr::AIUT::Lora_Demodulator</name>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator_1a82271de3b1e51b4f981041178325645f" kind="typedef"><name>sptr</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator_1a41721025c1d3e280263a93c84c1a19d0" kind="function"><name>make</name></member>
+  </compound>
+  <compound refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl" kind="class"><name>gr::AIUT::Lora_Demodulator_impl</name>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a8d3b8e5f8641b9b10b7d06b5d72d47fb" kind="variable"><name>d_out_port</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a2fbd520236f36280d33f22384e5c9bc2" kind="variable"><name>d_state</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a73f5b10ed0a5c0ec76fbb8c58246993c" kind="variable"><name>d_sf</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1aff6b8fbf7e9ef0126c6d32ffc3251b64" kind="variable"><name>d_ldr</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a37b4a417eae9d83e79e5ca095be0cc1b" kind="variable"><name>d_num_symbols</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1aaaaf38139ca6f58e1c758d6e928d5fb2" kind="variable"><name>d_fft_size_factor</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a181b6ee7fa9829f6002d49a257967c3e" kind="variable"><name>d_fft_size</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1ae7877d7baa712d8ef36daffaecc6c937" kind="variable"><name>d_overlaps</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1aa5ccfc681581749f14fb08f199f03507" kind="variable"><name>d_offset</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a7324184a06a22454b9cfa33b07974a0b" kind="variable"><name>d_power</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1ac468805004a64a6e473b912c506bb1a0" kind="variable"><name>d_threshold</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a420757344ec5b7057211defe93ec15a4" kind="variable"><name>d_squelched</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a9b79f5b981bb3218f4e2c6489f08055f" kind="variable"><name>d_preamble_idx</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1aa41fa9f6c992e57ffe2be348a63c19bd" kind="variable"><name>d_sfd_idx</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a8d57aa78ab2cbe04d36a9389eb5c0e11" kind="variable"><name>d_argmax_history</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a3b0e012643e5baf74a295d7507db5f39" kind="variable"><name>d_sfd_history</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1aae8e20d6767720bdb871833072affdce" kind="variable"><name>d_sync_recovery_counter</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a1e0f7fe7102bb33f255e44ee5f2ec000" kind="variable"><name>d_fft</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1aa0e771205f28b3f88d42f9ea0f53cb48" kind="variable"><name>d_window</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a5978df902ae20c81a149536c0c857688" kind="variable"><name>d_beta</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a4c4de4c2e5971eb8b2a3dd320e0ee970" kind="variable"><name>d_upchirp</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a09a7a58b35cb793595dbd9c844015e2d" kind="variable"><name>d_downchirp</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a6882c4239ccc4698aec0f4e2f6ac715e" kind="variable"><name>d_symbols</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1adf6d0468ac7917b4dafe2b6321f26971" kind="variable"><name>f_raw</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1acca6d54214eaba0d95f180646a6fef23" kind="variable"><name>f_up_windowless</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a2afc37255321f623f2c8a52329afd699" kind="variable"><name>f_up</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1ab16dfb45e57690eea115094e558a1578" kind="variable"><name>f_down</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a60190bef73f371a68dfa3a36e80d07a1" kind="function"><name>Lora_Demodulator_impl</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a20818b65d680d0a1b0ec6f722322e9c5" kind="function"><name>~Lora_Demodulator_impl</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1ae5343889a098465c75266c00d93a9f85" kind="function"><name>argmax</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a4bee3924be8fb7b0039318524564c56d" kind="function"><name>forecast</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl_1a8ae9d061cda3f84cd97b5c6902acfb13" kind="function"><name>general_work</name></member>
+  </compound>
+  <compound refid="namespacegr" kind="namespace"><name>gr</name>
+  </compound>
+  <compound refid="namespacegr_1_1AIUT" kind="namespace"><name>gr::AIUT</name>
+    <member refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497" kind="enum"><name>demodulator_state_t</name></member>
+    <member refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497af51a11d6ec5e13afd175d35e762969ee" kind="enumvalue"><name>S_RESET</name></member>
+    <member refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497a2422414bceaea7eeab456dad4d9653da" kind="enumvalue"><name>S_PREFILL</name></member>
+    <member refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497aae1cb05000f9840fa472d75a7dae90c2" kind="enumvalue"><name>S_DETECT_PREAMBLE</name></member>
+    <member refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497ae062b617fc21afc38905319107d24b8c" kind="enumvalue"><name>S_SFD_SYNC</name></member>
+    <member refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497a09e387661ec114bfbee52775f75cb417" kind="enumvalue"><name>S_READ_HEADER</name></member>
+    <member refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497ad18b138e6c14d791d54876e0babb5748" kind="enumvalue"><name>S_READ_PAYLOAD</name></member>
+    <member refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497ab5a67dcd1f36e78ae6362366f80e3859" kind="enumvalue"><name>S_OUT</name></member>
+    <member refid="namespacegr_1_1AIUT_1ad9d311d5544957cec63e03427e8683f9" kind="variable"><name>whitening_sequence_length</name></member>
+    <member refid="namespacegr_1_1AIUT_1ace166d04cffe06150c6951de5e09213c" kind="variable"><name>whitening_sequence_sf6_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a9b7de5bf60e6fb9f8f43eec730f2f337" kind="variable"><name>whitening_sequence_sf7_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1ac4068320f80762c4cf49790f11919b45" kind="variable"><name>whitening_sequence_sf8_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a78dadcab13515ea8541cda31b6547bb1" kind="variable"><name>whitening_sequence_sf9_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a7973dd278a729e8aa810f6de153e53fa" kind="variable"><name>whitening_sequence_sf10_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1aa8b84bb895b810dfafecdbeaddbe60c4" kind="variable"><name>whitening_sequence_sf11_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a332152921463acde86f8ff45af5b74e0" kind="variable"><name>whitening_sequence_sf12_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a2feec5fe92b887e75dfb4f6f81c97b5a" kind="variable"><name>whitening_sequence_sf6_ldr_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a83329a96d78d991615a4e420b28a2cea" kind="variable"><name>whitening_sequence_sf7_ldr_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a2a3cd8966bbac1beff2b9ec1b1ab9bbb" kind="variable"><name>whitening_sequence_sf8_ldr_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a7e2a08ff68301adaa13faaf508520aae" kind="variable"><name>whitening_sequence_sf9_ldr_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a4ae6dcfd1536c79c6bfdb1f0af2125e9" kind="variable"><name>whitening_sequence_sf10_ldr_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a393ab5cc0e8933cb5da7f4040e94c742" kind="variable"><name>whitening_sequence_sf11_ldr_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a6060cde2a3c50298336a475ad44e4ae5" kind="variable"><name>whitening_sequence_sf12_ldr_implicit</name></member>
+  </compound>
+  <compound refid="namespacepmt" kind="namespace"><name>pmt</name>
+  </compound>
+  <compound refid="namespacestd" kind="namespace"><name>std</name>
+  </compound>
+  <compound refid="api_8h" kind="file"><name>api.h</name>
+    <member refid="api_8h_1a3fb5ea3a9adfe6a8e4edd9834259c70e" kind="define"><name>AIUT_API</name></member>
+  </compound>
+  <compound refid="group__defs_8dox" kind="file"><name>group_defs.dox</name>
+  </compound>
+  <compound refid="lora_8h" kind="file"><name>lora.h</name>
+  </compound>
+  <compound refid="Lora__Decoder_8h" kind="file"><name>Lora_Decoder.h</name>
+    <member refid="Lora__Decoder_8h_1ac566a60d8bb0a9e4e1e50b520be9ac4b" kind="define"><name>SYMBOL_TIMEOUT_COUNT</name></member>
+  </compound>
+  <compound refid="Lora__Decoder__impl_8h" kind="file"><name>Lora_Decoder_impl.h</name>
+  </compound>
+  <compound refid="Lora__Demodulator_8h" kind="file"><name>Lora_Demodulator.h</name>
+    <member refid="Lora__Demodulator_8h_1a335ad09db4e5de6a6a839127964ae49e" kind="define"><name>DEMODULATOR_HISTORY_DEPTH</name></member>
+    <member refid="Lora__Demodulator_8h_1aec63cfd1559e0075e35fae2f1a81b1fc" kind="define"><name>REQUIRED_PREAMBLE_CHIRPS</name></member>
+    <member refid="Lora__Demodulator_8h_1af4808b2f42dd1e6656798151f4f9a4c7" kind="define"><name>REQUIRED_SFD_CHIRPS</name></member>
+    <member refid="Lora__Demodulator_8h_1a2f0f156e1cba585db801dc65f46fa8d1" kind="define"><name>LORA_SFD_TOLERANCE</name></member>
+    <member refid="Lora__Demodulator_8h_1a1fd26d306ddc14fd13364a5122543ce0" kind="define"><name>LORA_PREAMBLE_TOLERANCE</name></member>
+    <member refid="Lora__Demodulator_8h_1a01b27f7394993d19939d2bae314124b9" kind="define"><name>DEMODULATOR_SYNC_RECOVERY_COUNT</name></member>
+  </compound>
+  <compound refid="Lora__Demodulator__impl_8h" kind="file"><name>Lora_Demodulator_impl.h</name>
+  </compound>
+  <compound refid="main__page_8dox" kind="file"><name>main_page.dox</name>
+  </compound>
+  <compound refid="group__block" kind="group"><name>block</name>
+  </compound>
+  <compound refid="dir_ad5e2bf1fd75284b1f1e76a880b656c3" kind="dir"><name>AIUT</name>
+  </compound>
+  <compound refid="dir_d44c64559bbebec7f509842c48db8b23" kind="dir"><name>include</name>
+  </compound>
+  <compound refid="dir_97aefd0d527b934f1d99a682da8fe6a9" kind="dir"><name>lib</name>
+  </compound>
+  <compound refid="indexpage" kind="page"><name>index</name>
+  </compound>
+</doxygenindex>

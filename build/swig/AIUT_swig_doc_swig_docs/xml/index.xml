@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.11">
+  <compound refid="classgr_1_1AIUT_1_1Lora__Decoder" kind="class"><name>gr::AIUT::Lora_Decoder</name>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder_1a2ebcb0b75f38029e861052233d16fe4d" kind="typedef"><name>sptr</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Decoder_1a03823716d2a093bd26db737ca4a7171f" kind="function"><name>make</name></member>
+  </compound>
+  <compound refid="classgr_1_1AIUT_1_1Lora__Demodulator" kind="class"><name>gr::AIUT::Lora_Demodulator</name>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator_1a82271de3b1e51b4f981041178325645f" kind="typedef"><name>sptr</name></member>
+    <member refid="classgr_1_1AIUT_1_1Lora__Demodulator_1a41721025c1d3e280263a93c84c1a19d0" kind="function"><name>make</name></member>
+  </compound>
+  <compound refid="namespacegr" kind="namespace"><name>gr</name>
+  </compound>
+  <compound refid="namespacegr_1_1AIUT" kind="namespace"><name>gr::AIUT</name>
+    <member refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497" kind="enum"><name>demodulator_state_t</name></member>
+    <member refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497af51a11d6ec5e13afd175d35e762969ee" kind="enumvalue"><name>S_RESET</name></member>
+    <member refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497a2422414bceaea7eeab456dad4d9653da" kind="enumvalue"><name>S_PREFILL</name></member>
+    <member refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497aae1cb05000f9840fa472d75a7dae90c2" kind="enumvalue"><name>S_DETECT_PREAMBLE</name></member>
+    <member refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497ae062b617fc21afc38905319107d24b8c" kind="enumvalue"><name>S_SFD_SYNC</name></member>
+    <member refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497a09e387661ec114bfbee52775f75cb417" kind="enumvalue"><name>S_READ_HEADER</name></member>
+    <member refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497ad18b138e6c14d791d54876e0babb5748" kind="enumvalue"><name>S_READ_PAYLOAD</name></member>
+    <member refid="namespacegr_1_1AIUT_1a0c5a9c3146c4a15c506d51448ec32497ab5a67dcd1f36e78ae6362366f80e3859" kind="enumvalue"><name>S_OUT</name></member>
+    <member refid="namespacegr_1_1AIUT_1ad9d311d5544957cec63e03427e8683f9" kind="variable"><name>whitening_sequence_length</name></member>
+    <member refid="namespacegr_1_1AIUT_1ace166d04cffe06150c6951de5e09213c" kind="variable"><name>whitening_sequence_sf6_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a9b7de5bf60e6fb9f8f43eec730f2f337" kind="variable"><name>whitening_sequence_sf7_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1ac4068320f80762c4cf49790f11919b45" kind="variable"><name>whitening_sequence_sf8_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a78dadcab13515ea8541cda31b6547bb1" kind="variable"><name>whitening_sequence_sf9_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a7973dd278a729e8aa810f6de153e53fa" kind="variable"><name>whitening_sequence_sf10_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1aa8b84bb895b810dfafecdbeaddbe60c4" kind="variable"><name>whitening_sequence_sf11_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a332152921463acde86f8ff45af5b74e0" kind="variable"><name>whitening_sequence_sf12_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a2feec5fe92b887e75dfb4f6f81c97b5a" kind="variable"><name>whitening_sequence_sf6_ldr_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a83329a96d78d991615a4e420b28a2cea" kind="variable"><name>whitening_sequence_sf7_ldr_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a2a3cd8966bbac1beff2b9ec1b1ab9bbb" kind="variable"><name>whitening_sequence_sf8_ldr_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a7e2a08ff68301adaa13faaf508520aae" kind="variable"><name>whitening_sequence_sf9_ldr_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a4ae6dcfd1536c79c6bfdb1f0af2125e9" kind="variable"><name>whitening_sequence_sf10_ldr_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a393ab5cc0e8933cb5da7f4040e94c742" kind="variable"><name>whitening_sequence_sf11_ldr_implicit</name></member>
+    <member refid="namespacegr_1_1AIUT_1a6060cde2a3c50298336a475ad44e4ae5" kind="variable"><name>whitening_sequence_sf12_ldr_implicit</name></member>
+  </compound>
+  <compound refid="namespacestd" kind="namespace"><name>std</name>
+  </compound>
+  <compound refid="api_8h" kind="file"><name>api.h</name>
+    <member refid="api_8h_1a3fb5ea3a9adfe6a8e4edd9834259c70e" kind="define"><name>AIUT_API</name></member>
+  </compound>
+  <compound refid="lora_8h" kind="file"><name>lora.h</name>
+  </compound>
+  <compound refid="Lora__Decoder_8h" kind="file"><name>Lora_Decoder.h</name>
+    <member refid="Lora__Decoder_8h_1ac566a60d8bb0a9e4e1e50b520be9ac4b" kind="define"><name>SYMBOL_TIMEOUT_COUNT</name></member>
+  </compound>
+  <compound refid="Lora__Demodulator_8h" kind="file"><name>Lora_Demodulator.h</name>
+    <member refid="Lora__Demodulator_8h_1a335ad09db4e5de6a6a839127964ae49e" kind="define"><name>DEMODULATOR_HISTORY_DEPTH</name></member>
+    <member refid="Lora__Demodulator_8h_1aec63cfd1559e0075e35fae2f1a81b1fc" kind="define"><name>REQUIRED_PREAMBLE_CHIRPS</name></member>
+    <member refid="Lora__Demodulator_8h_1af4808b2f42dd1e6656798151f4f9a4c7" kind="define"><name>REQUIRED_SFD_CHIRPS</name></member>
+    <member refid="Lora__Demodulator_8h_1a2f0f156e1cba585db801dc65f46fa8d1" kind="define"><name>LORA_SFD_TOLERANCE</name></member>
+    <member refid="Lora__Demodulator_8h_1a1fd26d306ddc14fd13364a5122543ce0" kind="define"><name>LORA_PREAMBLE_TOLERANCE</name></member>
+    <member refid="Lora__Demodulator_8h_1a01b27f7394993d19939d2bae314124b9" kind="define"><name>DEMODULATOR_SYNC_RECOVERY_COUNT</name></member>
+  </compound>
+  <compound refid="dir_ad5e2bf1fd75284b1f1e76a880b656c3" kind="dir"><name>/home/ritankar/gr-AIUT/include/AIUT</name>
+  </compound>
+  <compound refid="dir_d44c64559bbebec7f509842c48db8b23" kind="dir"><name>/home/ritankar/gr-AIUT/include</name>
+  </compound>
+</doxygenindex>

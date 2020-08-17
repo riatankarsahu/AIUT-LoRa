@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_d44c64559bbebec7f509842c48db8b23" kind="dir">
+    <compoundname>/home/ritankar/gr-AIUT/include</compoundname>
+    <innerdir refid="dir_ad5e2bf1fd75284b1f1e76a880b656c3">/home/ritankar/gr-AIUT/include/AIUT</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ritankar/gr-AIUT/include/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ritankar/gr-AIUT/lib/qa_AIUT.cc
+qa_AIUT.h
+/home/ritankar/gr-AIUT/lib/qa_AIUT.h
+
+/home/ritankar/gr-AIUT/lib/qa_AIUT.h
+gnuradio/attributes.h
+-
+cppunit/TestSuite.h
+-
+
+/home/ritankar/gr-AIUT/lib/test_AIUT.cc
+config.h
+/home/ritankar/gr-AIUT/lib/config.h
+cppunit/TextTestRunner.h
+-
+cppunit/XmlOutputter.h
+-
+gnuradio/unittests.h
+-
+qa_AIUT.h
+/home/ritankar/gr-AIUT/lib/qa_AIUT.h
+iostream
+-
+fstream
+-
+

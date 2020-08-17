@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classgr_1_1AIUT_1_1Lora__Demodulator" kind="class" language="C++" prot="public">
+    <compoundname>gr::AIUT::Lora_Demodulator</compoundname>
+    <basecompoundref prot="public" virt="virtual">block</basecompoundref>
+    <derivedcompoundref refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl" prot="public" virt="non-virtual">gr::AIUT::Lora_Demodulator_impl</derivedcompoundref>
+    <includes refid="Lora__Demodulator_8h" local="no">Lora_Demodulator.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classgr_1_1AIUT_1_1Lora__Demodulator_1a82271de3b1e51b4f981041178325645f" prot="public" static="no">
+        <type>boost::shared_ptr&lt; <ref refid="classgr_1_1AIUT_1_1Lora__Demodulator" kindref="compound">Lora_Demodulator</ref> &gt;</type>
+        <definition>typedef boost::shared_ptr&lt;Lora_Demodulator&gt; gr::AIUT::Lora_Demodulator::sptr</definition>
+        <argsstring></argsstring>
+        <name>sptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h" line="60" column="1" bodyfile="/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classgr_1_1AIUT_1_1Lora__Demodulator_1a41721025c1d3e280263a93c84c1a19d0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classgr_1_1AIUT_1_1Lora__Demodulator_1a82271de3b1e51b4f981041178325645f" kindref="member">sptr</ref></type>
+        <definition>static sptr gr::AIUT::Lora_Demodulator::make</definition>
+        <argsstring>(int spreading_factor, bool low_data_rate, float beta, int fft_factor)</argsstring>
+        <name>make</name>
+        <param>
+          <type>int</type>
+          <declname>spreading_factor</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>low_data_rate</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>beta</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>fft_factor</declname>
+        </param>
+        <briefdescription>
+<para>Return a shared_ptr to a new instance of <ref refid="classgr_1_1AIUT_1_1Lora__Demodulator" kindref="compound">AIUT::Lora_Demodulator</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>To avoid accidental use of raw pointers, <ref refid="classgr_1_1AIUT_1_1Lora__Demodulator" kindref="compound">AIUT::Lora_Demodulator</ref>&apos;s constructor is in a private implementation class. <ref refid="classgr_1_1AIUT_1_1Lora__Demodulator_1a41721025c1d3e280263a93c84c1a19d0" kindref="member">AIUT::Lora_Demodulator::make</ref> is the public interface for creating new instances. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h" line="70" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>&lt;+description of block+&gt;<itemizedlist>
+<listitem></listitem></itemizedlist>
+</para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="12">
+        <label>block</label>
+      </node>
+      <node id="13">
+        <label>gr::AIUT::Lora_Demodulator_impl</label>
+        <link refid="classgr_1_1AIUT_1_1Lora__Demodulator__impl"/>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>gr::AIUT::Lora_Demodulator</label>
+        <link refid="classgr_1_1AIUT_1_1Lora__Demodulator"/>
+        <childnode refid="12" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="15">
+        <label>block</label>
+      </node>
+      <node id="14">
+        <label>gr::AIUT::Lora_Demodulator</label>
+        <link refid="classgr_1_1AIUT_1_1Lora__Demodulator"/>
+        <childnode refid="15" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h" line="58" column="1" bodyfile="/home/ritankar/gr-AIUT/include/AIUT/Lora_Demodulator.h" bodystart="57" bodyend="71"/>
+    <listofallmembers>
+      <member refid="classgr_1_1AIUT_1_1Lora__Demodulator_1a41721025c1d3e280263a93c84c1a19d0" prot="public" virt="non-virtual"><scope>gr::AIUT::Lora_Demodulator</scope><name>make</name></member>
+      <member refid="classgr_1_1AIUT_1_1Lora__Demodulator_1a82271de3b1e51b4f981041178325645f" prot="public" virt="non-virtual"><scope>gr::AIUT::Lora_Demodulator</scope><name>sptr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
