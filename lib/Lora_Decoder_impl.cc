@@ -407,24 +407,96 @@ namespace gr {
       }
     }
 
-    int
-    Lora_Decoder_impl::general_work (int noutput_items,
-                       gr_vector_int &ninput_items,
-                       gr_vector_const_void_star &input_items,
-                       gr_vector_void_star &output_items)
+    void
+    Lora_Decoder_impl::decode(pmt_t msg)
     {
-      const <+ITYPE+> *in = (const <+ITYPE+> *) input_items[0];
-      <+OTYPE+> *out = (<+OTYPE+> *) output_items[0];
+      pmt_t symbols(cdr(msg));
 
-      // Do <+signal processing+>
-      // Tell runtime system how many input items we consumed on
-      // each input stream.
-      consume_each (noutput_items);
+      size_t pkt_len(0);
+      const uint16_t* symbols_v = u16vector_elements(symbols, pkt_len);
 
-      // Tell runtime system how many output items we produced.
-      return noutput_items;
+      vector<unsigned short> symbols_in;
+      vector<unsigned short> header_symbols_in;
+      vector<unsigned short> payload_symbols_in;
+      vector<unsigned char> header_codewords;
+      vector<unsigned char> payload_codewords;
+      vector<unsigned char> header_bytes;
+      vector<unsigned char> payload_bytes;
+      vector<unsigned char> combined_bytes;
+
+      symbols_in.clear();
+      for (int i = 0; i < pkt_len; i++) symbols_in.push_back(symbols_v[i]);
+
+      to_gray(symbols_in);
+#if 1 // Disable this #if to derive the whitening sequence
+      whiten(symbols_in);
+
+      for (int i = 0; (i < symbols_in.size()) && (i < 8); i++) header_symbols_in.push_back(symbols_in[i]);
+      for (int i = 8;  i < symbols_in.size()            ; i++) payload_symbols_in.push_back(symbols_in[i]);
+
+      #if DEBUG_OUTPUT
+        cout << "header syms len " << header_symbols_in.size() << endl;
+        cout << "payload syms len " << payload_symbols_in.size() << endl;
+
+        cout << "header dewhitened symbols" << endl;
+        print_bitwise_u16(header_symbols_in);
+        cout << "payload dewhitened symbols" << endl;
+        print_bitwise_u16(payload_symbols_in);
+      #endif
+
+      // Decode header
+      // First 8 symbols are always sent at ppm=d_sf-2, rdd=4 (code rate 4/8), regardless of header mode
+      deinterleave(header_symbols_in, header_codewords, d_sf-2, 4);
+      #if DEBUG_OUTPUT
+        cout << "deinterleaved header" << endl;
+        print_bitwise_u8(header_codewords);
+      #endif
+
+      hamming_decode(header_codewords, header_bytes, 4);
+
+      // Decode payload
+      // Remaining symbols are at ppm=d_sf, unless sent at the low data rate, in which case ppm=d_sf-2
+      deinterleave(payload_symbols_in, payload_codewords, d_ldr ? (d_sf-2) : d_sf, d_cr);
+      #if DEBUG_OUTPUT
+        cout << "deinterleaved payload" << endl;
+        print_bitwise_u8(payload_codewords);
+      #endif
+
+      hamming_decode(payload_codewords, payload_bytes, d_cr);
+      #if DEBUG_OUTPUT
+        cout << "payload data" << endl;
+        print_bitwise_u8(payload_bytes);
+      #endif
+
+      // Combine header and payload vectors by interleaving data nybbles
+      header_bytes.insert(header_bytes.end(), payload_bytes.begin(), payload_bytes.end());
+      unsigned int i = 0;
+      for (i = 0; i < header_bytes.size(); i++)
+      {
+        if (i%2 == 0)
+        {
+          combined_bytes.push_back((header_bytes[i] << 4) & 0xF0);
+        }
+        else
+        {
+          combined_bytes[i/2] |= header_bytes[i] & 0x0F;
+        }
+      }
+
+      pmt_t output = init_u8vector(combined_bytes.size(), combined_bytes);
+
+#else // Whitening sequence derivation
+      for (int i = 0; i < symbols_in.size(); i++)
+      {
+        cout << ", " << bitset<16>(symbols_in[i]);
+      }
+      cout << endl;
+      cout << "Length of above: " << symbols_in.size() << endl;
+      pmt_t output = init_u16vector(symbols_in.size(), symbols_in);
+#endif
+
+      pmt_t msg_pair = cons(make_dict(), output);
+      message_port_pub(d_out_port, msg_pair);
     }
-
   } /* namespace AIUT */
 } /* namespace gr */
-
