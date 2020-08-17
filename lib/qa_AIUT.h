@@ -1,6 +1,8 @@
 /* -*- c++ -*- */
 /*
- * Copyright 2012 Free Software Foundation, Inc.
+ * Copyright 2020 AIUT sp. z o. o
+ * Author - Ritankar Sahu
+ * Inspiration - Matt Knight (Bastille Threat Research Team)
  *
  * This file is part of GNU Radio
  *
