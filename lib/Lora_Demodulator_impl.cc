@@ -27,6 +27,9 @@
 #include <gnuradio/io_signature.h>
 #include "Lora_Demodulator_impl.h"
 
+using namespace std;
+using namespace pmt;
+
 #define DEBUG_OFF 0
 #define DEBUG_INFO 1
 #define DEBUG_VERBOSE 2
@@ -54,10 +57,10 @@ namespace gr {
       : gr::block("Lora_Demodulator",
               gr::io_signature::make(1, 1, sizeof(gr_complex)),
               gr::io_signature::make(0, 0, 0)),
-        f_raw("raw.out", std::ios::out),
-        f_up_windowless("up_windowless.out", std::ios::out),
-        f_up("up.out", std::ios::out),
-        f_down("down.out", std::ios::out),
+        f_raw("raw.out", ios::out),
+        f_up_windowless("up_windowless.out", ios::out),
+        f_up("up.out", ios::out),
+        f_down("down.out", ios::out),
         d_sf(spreading_factor),
         d_ldr(low_data_rate),
         d_beta(beta),
@@ -67,7 +70,7 @@ namespace gr {
       if (d_sf == 6) assert(!header);
       assert(d_fft_size_factor > 0);
 
-      d_out_port = pmt::mp("out");
+      d_out_port = mp("out");
       message_port_register_out(d_out_port);
 
       d_state = S_RESET;
@@ -92,8 +95,8 @@ namespace gr {
       for (int i = 0; i < 2*d_num_symbols; i++) 
       {
         accumulator += phase;
-        d_downchirp.push_back(gr_complex(std::conj(std::polar(1.0, accumulator))));
-        d_upchirp.push_back(gr_complex(std::polar(1.0, accumulator)));
+        d_downchirp.push_back(gr_complex(conj(polar(1.0, accumulator))));
+        d_upchirp.push_back(gr_complex(polar(1.0, accumulator)));
         phase += (2*M_PI)/d_num_symbols;
       }
       set_history(DEMODULATOR_HISTORY_DEPTH*d_num_symbols);
@@ -161,7 +164,7 @@ namespace gr {
 
       if (buffer == NULL || up_block == NULL || down_block == NULL)
       {
-        std::cerr << "Unable to allocate processing buffer!" << std::endl;
+        cerr << "Unable to allocate processing buffer!" << endl;
       }
 
       // Dechirp the incoming signal
@@ -217,7 +220,7 @@ namespace gr {
         d_state = S_PREFILL;
 
         #if DEBUG >= DEBUG_INFO
-          std::cout << "Next state: S_PREFILL" << std::endl;
+          cout << "Next state: S_PREFILL" << endl;
         #endif
 
         break;
@@ -229,7 +232,7 @@ namespace gr {
           d_state = S_DETECT_PREAMBLE;
 
           #if DEBUG >= DEBUG_INFO
-            std::cout << "Next state: S_DETECT_PREAMBLE" << std::endl;
+            cout << "Next state: S_DETECT_PREAMBLE" << endl;
           #endif
         }
         break;
@@ -239,7 +242,7 @@ namespace gr {
         d_preamble_idx = d_argmax_history[0];
 
         #if DEBUG >= DEBUG_VERBOSE
-          std::cout << "PREAMBLE " << d_argmax_history[0] << std::endl;
+          cout << "PREAMBLE " << d_argmax_history[0] << endl;
         #endif
 
         // Check for discontinuities that exceed some tolerance
@@ -258,7 +261,7 @@ namespace gr {
           d_state = S_SFD_SYNC;
 
           #if DEBUG >= DEBUG_INFO
-            std::cout << "Next state: S_SFD_SYNC" << std::endl;
+            cout << "Next state: S_SFD_SYNC" << endl;
           #endif
         }
         break;
@@ -275,8 +278,8 @@ namespace gr {
           d_overlaps = OVERLAP_DEFAULT;
 
           #if DEBUG >= DEBUG_INFO
-            std::cout << "Bailing out of sync loop"   << std::endl;
-            std::cout << "Next state: S_RESET" << std::endl;
+            cout << "Bailing out of sync loop"   << endl;
+            cout << "Next state: S_RESET" << endl;
           #endif
         }
 
@@ -292,7 +295,7 @@ namespace gr {
           }
 
           #if DEBUG >= DEBUG_VERBOSE
-            std::cout << "ol: " << std::dec << ol << " d_overlaps: " << d_overlaps << std::endl;
+            cout << "ol: " << dec << ol << " d_overlaps: " << d_overlaps << endl;
           #endif
 
           // Dechirp
@@ -337,7 +340,7 @@ namespace gr {
               d_overlaps = OVERLAP_DEFAULT;
 
               #if DEBUG >= DEBUG_INFO
-                std::cout << "Next state: S_READ_HEADER" << std::endl;
+                cout << "Next state: S_READ_HEADER" << endl;
               #endif
 
               break;
@@ -353,7 +356,7 @@ namespace gr {
           d_state = S_OUT;
 
           #if DEBUG >= DEBUG_INFO
-            std::cout << "Next state: S_OUT" << std::endl;
+            cout << "Next state: S_OUT" << endl;
           #endif
         }
         else if (d_symbols.size() == 7)   // Symbols [0:7] contain 2**(SF-2) bits/symbol, symbols [8:] have the full 2**(SF) bits
@@ -361,7 +364,7 @@ namespace gr {
           d_state = S_READ_PAYLOAD;
 
           #if DEBUG >= DEBUG_INFO
-            std::cout << "Next state: S_READ_PAYLOAD" << std::endl;
+            cout << "Next state: S_READ_PAYLOAD" << endl;
           #endif
         }
 
@@ -379,7 +382,7 @@ namespace gr {
           d_state = S_OUT;
 
           #if DEBUG >= DEBUG_INFO
-            std::cout << "Next state: S_OUT" << std::endl;
+            cout << "Next state: S_OUT" << endl;
           #endif
         }
 
@@ -400,14 +403,14 @@ namespace gr {
       // Emit a PDU to the decoder
       case S_OUT:
       {
-        pmt::pmt_t output = pmt::init_u16vector(d_symbols.size(), d_symbols);
-        pmt::pmt_t msg_pair = pmt::cons(pmt::make_dict(), output);
+        pmt_t output = init_u16vector(d_symbols.size(), d_symbols);
+        pmt_t msg_pair = cons(make_dict(), output);
         message_port_pub(d_out_port, msg_pair);
 
         d_state = S_RESET;
 
         #if DEBUG >= DEBUG_INFO
-          std::cout << "Next state: S_RESET" << std::endl;
+          cout << "Next state: S_RESET" << endl;
         #endif
 
         break;
