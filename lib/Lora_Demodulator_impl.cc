@@ -40,8 +40,10 @@ using namespace pmt;
 #define OVERLAP_DEFAULT 1
 #define OVERLAP_FACTOR 16
 
-namespace gr {
-  namespace AIUT {
+namespace gr 
+{
+  namespace AIUT 
+  {
 
     Lora_Demodulator::sptr
     Lora_Demodulator::make(int spreading_factor, bool low_data_rate, float beta, int fft_factor)
