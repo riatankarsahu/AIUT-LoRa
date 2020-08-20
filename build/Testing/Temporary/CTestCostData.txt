@@ -1,4 +1,4 @@
-test_AIUT 8 0.000495265
-qa_Lora_Decoder 4 0.117777
-qa_Lora_Demodulator 3 0.0644352
+test_AIUT 10 0.000291812
+qa_Lora_Decoder 6 0.0346841
+qa_Lora_Demodulator 5 0.0401365
 ---
