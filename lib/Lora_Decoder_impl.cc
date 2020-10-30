@@ -196,7 +196,7 @@ namespace gr {
         bit_offset = 0;
 
         // Iterate through each bit in the interleaver block
-        for (int bitcount = 0; bitcount < ppm*(4+rdd); bitcount++)
+        for (int bitcount = 0; bitcount < ppm*(4 + rdd); bitcount++)
         {
               // Symbol indexing                                     // Diagonal pattern mask
           if (symbols[(bitcount % (4+rdd)) + (4+rdd)*block_count] & ((0x1 << (ppm-1)) >> ((bit_idx + bit_offset) % ppm)))
